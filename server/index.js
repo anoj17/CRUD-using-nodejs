@@ -2,7 +2,7 @@ import express from "express"
 import Connection from "./database/db.js";
 // import Router from "./router/route.js";
 import cors from 'cors'
-import { addUser, getUser, getUserId } from "./controller/user-controller.js";
+import { addUser, getUser, getUserId, editUser, deleteUser } from "./controller/user-controller.js";
 
 const app = express()
 app.use(cors())
@@ -14,6 +14,8 @@ const PORT = 8000;
 app.post("/add", addUser)
 app.get("/all", getUser)
 app.get("/:id", getUserId)
+app.put("/:id", editUser)
+app.delete("/:id",deleteUser)
 
 Connection()
 

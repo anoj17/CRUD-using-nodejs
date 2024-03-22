@@ -37,3 +37,22 @@ export const getUserId = async (req, res) => {
     res.status(404).json({ message: "error data cannot find" })
   }
 }
+
+export const editUser = async (req, res) => {
+  let user = req.body;
+  const edituser = new User(user)
+  try {
+    await User.updateOne({ _id: req.params.id }, edituser)
+    res.status(201).json({ message: "edit user data" })
+  } catch (error) {
+    res.status(409).json({ message: "cannot edit user data" })
+  }
+}
+
+export const deleteUser = async (req, res) => {
+  try {
+    await User.deleteOne({ _id: req.params.id })
+  } catch (error) {
+    res.status(201).json({ message: "cannot delete user" })
+  }
+}
