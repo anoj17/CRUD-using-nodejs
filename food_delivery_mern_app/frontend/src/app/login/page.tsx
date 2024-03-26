@@ -8,6 +8,9 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
+import useMutation from 'use-mutation';
+import { userLogin } from '../server/api';
+
 
 const SighUp = () => {
   const [showEye, setShowEye] = useState(false)
@@ -23,14 +26,12 @@ const SighUp = () => {
     <div className='overflow-y-hidden h-[85vh]'>
       <div className="flex flex-col justify-center lg:h-[87vh] pb-20 lg:pb-2 pt-4 lg:pt-0 lg:mx-72 md:mx-20 md:px-10 lg:shadow lg:drop-shadow-sm lg:mt-2 px-20 bg-white lg:px-8">
         <div className="flex flex-col items-center justify-center">
-          <div className='relative'>
-            <Image className="mx-auto h-16 w-auto bg-fill shadow drop-shadow-lg rounded-full" alt='logo' src={signLogo} />
-            <label htmlFor='profileImage'>
+          <Image className="mx-auto h-16 w-auto bg-fill shadow drop-shadow-lg rounded-full" alt='logo' src={signLogo} />
+          {/* <label htmlFor='profileImage'>
               <div className='absolute bottom-0'>
                 <input type='file' className='' id='profileImage' />
               </div>
-            </label>
-          </div>
+            </label> */}
           <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Login in to your account</h2>
         </div>
 

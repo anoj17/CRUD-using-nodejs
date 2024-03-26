@@ -4,6 +4,8 @@ import type { Metadata } from "next";
 import { Inter } from "next/font/google";
 import "./globals.css";
 import Navbar from '../components/Navbar'
+import Provider from "./utils/Provider";
+import toast, { Toaster } from 'react-hot-toast';
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -22,7 +24,9 @@ export default function RootLayout({
       <body className={inter.className}>
         <div className="bg-slate-100 h-screen">
           <Navbar />
-          {children}
+          <Provider>
+            {children}
+          </Provider>
         </div>
       </body>
     </html>

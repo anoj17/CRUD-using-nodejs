@@ -1,7 +1,7 @@
 'use client'
 
 import Image from 'next/image'
-import React, { useState } from 'react'
+import React, { useRef, useState } from 'react'
 import signLogo from '../../assets/login-animation.gif'
 import { FaEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
@@ -9,10 +9,16 @@ import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
 import { useRouter } from 'next/navigation';
+import { signIn } from '../server/api'
+import { useMutation } from 'react-query';
+import toast, { Toaster } from 'react-hot-toast';
 
 const SighUp = () => {
   const [showEye, setShowEye] = useState(false)
+  const [image, setImage] = useState()
   const router = useRouter()
+
+  const ref = useRef(null)
 
   const form = useForm({
     defaultValues: {
@@ -20,32 +26,72 @@ const SighUp = () => {
       lname: '',
       email: '',
       password: '',
-      cpassword: ''
+      cpassword: '',
     }
   })
   const { register, control, handleSubmit } = form
 
-  const registerUser = (data: { password: string, cpassword: string }) => {
+  const { isLoading, mutate } = useMutation(['add'], signIn, {
+    onSuccess: res => {
+      // console.log(res.message)
+      // console.log(res.data.message)
+      toast(res.data.message)
+
+      if (res.data.alert) {
+        router.push("/login")
+      }
+    },
+    onError: error => {
+      console.log(error)
+    }
+  })
+
+  const registerUser = (data: { password: string, cpassword: string, fname: string, lname: string, email: string }) => {
     // console.log(data.password)
     const { password, cpassword } = data
     if (password !== cpassword) {
       alert("password and confirm password cannot matches")
     }
-    else {
-      // alert("successful")
-      router.push("/login")
-    }
+    mutate(data)
+    // setImage(profileImage)
+    // console.log(data)
   }
+
+  const showPassword = () => {
+    setShowEye(!showEye)
+  }
+
+  const selectProfile = () => {
+    ref.current.click()
+    // console.log(ref)
+  }
+
+  const changeProfile = (e: any) => {
+    setImage(e.target.files[0])
+    // console.log(image)
+  }
+
   return <>
 
-    <div className="flex flex-col justify-center h-screen items-center lg:h-[87vh] scrollbar-none overflow-y-scroll lg:mt-2 lg:mx-72 px-20 md:px-10 md:mx-20 mx-0 shadow drop-shadow-sm bg-white pt-44 lg:pt-28 py-6 lg:px-8">
-      <div className="sm:mx-auto sm:max-w-sm lg:pt-4">
-        <Image className="mx-auto h-16 w-auto shadow drop-shadow-lg rounded-full" alt='logo' src={signLogo} />
-        <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
-      </div>
+    <div className="flex flex-col justify-center h-screen items-center lg:h-[87vh] scrollbar-none overflow-y-scroll lg:mt-1 lg:mx-72 px-20 md:px-10 md:mx-20 mx-0 shadow drop-shadow-sm bg-white pt-44 lg:pt-20 py-6 lg:px-8">
 
       <div className="mt-5 w-full sm:max-w-sm">
-        <form className="space-y-4" action="#" onSubmit={handleSubmit(registerUser)} method="POST">
+        <div className="sm:mx-auto flex flex-col items-center justify-center sm:max-w-sm lg:pt-4">
+          <div className='h-50 w-[70px] object-contain overflow-hidden' >
+            {
+              image ? <Image className="mx-auto h-[60px] w-[60px] shadow cursor-pointer drop-shadow-lg overflow-hidden object-contain rounded-full" alt='logo' width={100} height={200} src={URL.createObjectURL(image)}
+                onClick={selectProfile} /> :
+                <Image className="mx-auto h-16 w-auto shadow cursor-pointer drop-shadow-lg rounded-full" alt='logo' src={signLogo} onClick={selectProfile} />
+            }
+          </div>
+          <div>
+            <label htmlFor='profileImage'>
+              <input type='file' accept='image/*' ref={ref} onChange={changeProfile} className='hidden' />
+            </label>
+          </div>
+          <h2 className="mt-3 text-center text-2xl font-bold leading-9 tracking-tight text-gray-900">Sign in to your account</h2>
+        </div>
+        <form className="space-y-4 mt-3" onSubmit={handleSubmit(registerUser)}>
           <div>
             <label className="block text-sm font-medium leading-6 text-gray-900">First Name</label>
             <div className="mt-2">
@@ -88,7 +134,7 @@ const SighUp = () => {
                 required
                 className="focus:outline-none border-none block w-[95%] pl-3 py-1.5 text-gray-90 placeholder:text-gray-400 sm:text-sm sm:leading-6" />
               <span className='cursor-pointer'
-                onClick={() => setShowEye(!showEye)}
+                onClick={showPassword}
               >
                 {
                   showEye ?
@@ -117,6 +163,7 @@ const SighUp = () => {
         </form>
         <DevTool control={control} />
       </div>
+      <Toaster />
     </div>
 
   </>
