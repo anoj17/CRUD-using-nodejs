@@ -9,7 +9,7 @@ import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Heading from './Heading';
 import Link from 'next/link'
-import { useSelector,useDispatch } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { logoutRedux } from '../app/redux/authSlice'
 
 const Navbar = () => {
@@ -29,7 +29,7 @@ const Navbar = () => {
   }
 
   const handleLogOut = () => {
-    // console.log(userData.alert)
+    console.log("logout successfully!")
     dispatch(logoutRedux())
   }
 
@@ -62,8 +62,8 @@ const Navbar = () => {
                   {
                     !isAuthenticated ?
                       <Link href='/login'><button onClick={() => setShowMenu(!showMenu)}>Login</button></Link> :
-                      <Link 
-                      href='/'><button onClick={handleLogOut}>Logout</button></Link>
+                      <Link
+                        href='/'><button onClick={handleLogOut}>Logout</button></Link>
                   }
                 </div>
               )
