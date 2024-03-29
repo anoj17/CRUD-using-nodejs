@@ -9,13 +9,28 @@ import { ImCross } from "react-icons/im";
 import { GiHamburgerMenu } from "react-icons/gi";
 import Heading from './Heading';
 import Link from 'next/link'
+import { useSelector,useDispatch } from 'react-redux';
+import { logoutRedux } from '../app/redux/authSlice'
 
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [showHam, setShowHam] = useState(false)
+  // const [changeLogin, setChangeLogin] = useState(false)
+
+
+
+  const dispatch = useDispatch()
+
+  const { isAuthenticated } = useSelector(state => state.auth)
+  // console.log(userData)
 
   const handleShowMenu = () => {
     setShowMenu(prev => !prev)
+  }
+
+  const handleLogOut = () => {
+    // console.log(userData.alert)
+    dispatch(logoutRedux())
   }
 
   return <>
@@ -44,7 +59,12 @@ const Navbar = () => {
               showMenu && (
                 <div className='absolute right-2 bg-white py-2 px-4 flex flex-col shadow drop-shadow-md'>
                   <Link href='/newproduct'><button onClick={() => setShowMenu(!showMenu)}>New Product</button></Link>
-                  <Link href='/login'><button onClick={() => setShowMenu(!showMenu)}>Login</button></Link>
+                  {
+                    !isAuthenticated ?
+                      <Link href='/login'><button onClick={() => setShowMenu(!showMenu)}>Login</button></Link> :
+                      <Link 
+                      href='/'><button onClick={handleLogOut}>Logout</button></Link>
+                  }
                 </div>
               )
             }

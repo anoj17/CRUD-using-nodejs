@@ -8,18 +8,46 @@ import { FaRegEyeSlash } from "react-icons/fa6";
 import Link from 'next/link';
 import { useForm } from 'react-hook-form';
 import { DevTool } from '@hookform/devtools';
-import useMutation from 'use-mutation';
 import { userLogin } from '../server/api';
+import { useMutation } from 'react-query';
+import toast from 'react-hot-toast';
+import { useRouter } from 'next/navigation';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginRedux } from '../redux/authSlice';
 
 
-const SighUp = () => {
+const Login = () => {
   const [showEye, setShowEye] = useState(false)
+
+  const router = useRouter()
+
+  const [userData, setUserData] = useState()
+
+  const userDatas = useSelector(state => state)
+
+  const dispatch = useDispatch()
 
   const form = useForm()
   const { register, control, handleSubmit } = form
 
+  const { mutate } = useMutation(['login'], userLogin, {
+    onSuccess: res => {
+      toast(res?.data.message)
+      if (res?.data.alert) {
+        router.push("/")
+        dispatch(loginRedux(res?.data))
+        // console.log(res.data)
+      }
+    },
+    onError: error => {
+      console.log(error)
+    }
+  })
+
   const loginUser = (data: any) => {
-    console.log(data)
+    // console.log(data)
+    setUserData(data)
+    mutate(data)
   }
 
   return <>
@@ -85,4 +113,4 @@ const SighUp = () => {
   </>
 }
 
-export default SighUp
+export default Login

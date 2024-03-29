@@ -23,8 +23,8 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <div className="bg-slate-100 h-screen">
-          <Navbar />
           <Provider>
+            <Navbar />
             {children}
           </Provider>
         </div>

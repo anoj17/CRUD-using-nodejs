@@ -33,13 +33,12 @@ const SighUp = () => {
 
   const { isLoading, mutate } = useMutation(['add'], signIn, {
     onSuccess: res => {
-      // console.log(res.message)
-      // console.log(res.data.message)
-      toast(res.data.message)
+      toast(res?.data.message)
 
-      if (res.data.alert) {
+      if (res?.data.alert) {
         router.push("/login")
       }
+      // console.log(formData)
     },
     onError: error => {
       console.log(error)
@@ -51,10 +50,25 @@ const SighUp = () => {
     const { password, cpassword } = data
     if (password !== cpassword) {
       alert("password and confirm password cannot matches")
+      return;
     }
+
+    // const formData = new FormData()
+
+    // formData.append('fname', data.fname)
+    // formData.append('lname', data.lname)
+    // formData.append('email', data.email)
+    // formData.append('password', data.password)
+    // formData.append('cpassword', data.cpassword)
+    // formData.append('image', image)
+    // useEffect(() => {
+    // }, [image]);
+
     mutate(data)
+
+    // mutate(data)
     // setImage(profileImage)
-    // console.log(data)
+    console.log(data)
   }
 
   const showPassword = () => {

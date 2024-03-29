@@ -10,6 +10,7 @@ const userSchema = mongoose.Schema({
     },
     password: String,
     cpassword: String,
+    // image: String
 })
 
 const User = mongoose.model('User', userSchema)

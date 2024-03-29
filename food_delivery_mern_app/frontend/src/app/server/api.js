@@ -6,8 +6,13 @@ const URL = 'http://localhost:8000';
 
 export const signIn = async (data) => {
     try {
-        // console.log(data)
-        return await axios.post(`${URL}/signin`, data)
+        console.log(data)
+        return await axios.post(`${URL}/signin`, data,)
+        // {
+        //     headers: {
+        //         "Content-Type": "multipart/form-data"
+        //     }
+        // }
 
     } catch (error) {
         console.log("backend error", error)

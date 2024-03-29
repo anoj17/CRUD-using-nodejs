@@ -1,4 +1,7 @@
 import User from "../schema/schema.js"
+// import multer from "multer"
+
+// const upload = multer({ dest: "uploads/" })
 
 export const signIn = async (req, res) => {
   console.log(req.body)
@@ -16,7 +19,8 @@ export const signIn = async (req, res) => {
       lname,
       email,
       password,
-      cpassword
+      cpassword,
+      // image: req.file.filename
     })
 
     await user.save()
@@ -26,6 +30,33 @@ export const signIn = async (req, res) => {
   }
 }
 
-export const loginUser = (req, res) => {
-  console.log(req.body)
+export const loginUser = async (req, res) => {
+  const { email, password } = req.body
+  try {
+    const userEmail = await User.findOne({ email: email })
+
+    if (userEmail) {
+      const userPassword = userEmail.password
+
+      if (password === userPassword) {
+        const dataSend = {
+          _id: userEmail._id,
+          fname: userEmail.fname,
+          lname: userEmail.lname,
+          email: userEmail.email,
+          password: userEmail.password,
+          // image: userEmail.image
+        }
+        console.log(dataSend)
+        return res.status(201).json({ message: "Login successfully!", alert: true, dataSend })
+      } else {
+        return res.status(201).json({ message: "username and password incorrect", alert: false })
+      }
+    } else {
+      return res.status(201).json({ message: "username cannot find", alert: false })
+    }
+
+  } catch (error) {
+    return res.status(402).json({ message: "error while login", error })
+  }
 }
