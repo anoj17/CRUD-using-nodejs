@@ -4,16 +4,31 @@ import { useState } from "react";
 import { IoCloudUpload } from "react-icons/io5";
 import { ImageToBase64 } from '../utility/ImageToBase64'
 import Image from "next/image";
+import { useMutation } from "react-query";
+import { addProduct } from "../server/api";
+import toast from "react-hot-toast";
 
 
 const NewProduct = () => {
 
     const [data, setData] = useState({
         name: "",
-        category: "",
+        category: "fruits",
         image: "",
         price: "",
         description: ""
+    })
+
+    const { mutate } = useMutation(['product'], addProduct, {
+        onSuccess: res => {
+            console.log(res.data)
+            if (res.data.alert) {
+                toast(res.data.message)
+            }
+        },
+        onError: error => {
+            console.log(error)
+        }
     })
 
     const changeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
@@ -40,7 +55,15 @@ const NewProduct = () => {
 
     const submitData = (e: Event) => {
         e.preventDefault()
-        console.log(data)
+
+        const {name, price, image, category } = data
+
+        if(name && price && image && category){
+            mutate(data)
+        }else{
+            toast("fill the required field!")
+        }
+
     }
     return <>
 
@@ -50,12 +73,14 @@ const NewProduct = () => {
                 <input type="text" name="name" value={data.name} onChange={changeHandle} className="py-1 rounded-md focus:outline-none px-2 bg-slate-300 my-1" />
 
                 <label htmlFor="category">Category</label>
-                <select name="category" value={data.category} onChange={changeHandle} className="py-1 rounded-md focus:outline-none px-2 bg-slate-300 my-1">
-                    <option>Fruits</option>
-                    <option>Vegetables</option>
-                    <option>Ice-Cream</option>
-                    <option>Dosa</option>
-                    <option>Pizza</option>
+                <select name="category" onChange={changeHandle} className="py-1 rounded-md focus:outline-none px-2 bg-slate-300 my-1">
+                    <option value={"value"}>Select Cagegory</option>
+                    <option value={"fruits"}>Fruits</option>
+                    <option value={"cake"}>Cake</option>
+                    <option value={"vegetable"}>Vegetables</option>
+                    <option value={"ice-cream"}>Ice-Cream</option>
+                    <option value={"dosa"}>Dosa</option>
+                    <option value={"pizza"}>Pizza</option>
                 </select>
 
                 <label htmlFor="image">Image

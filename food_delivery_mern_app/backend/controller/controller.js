@@ -1,4 +1,5 @@
 import User from "../schema/schema.js"
+import Product from "../schema/schema.js"
 // import multer from "multer"
 
 // const upload = multer({ dest: "uploads/" })
@@ -58,5 +59,25 @@ export const loginUser = async (req, res) => {
 
   } catch (error) {
     return res.status(402).json({ message: "error while login", error })
+  }
+}
+
+export const addProduct = async (req, res) => {
+  try{
+    const {name, image, description, price, category } = req.body
+
+    const product = new Product({
+      name,
+      category,
+      image,
+      price,
+      description
+    })
+    console.log(product)
+    await product.save()
+    
+    return res.status(201).json({message: "product successfully added", alert: true})
+  }catch(error){
+    return res.status(201).json({ message: "Didn't add product!", alert: false})
   }
 }

@@ -20,9 +20,18 @@ export const signIn = async (data) => {
 }
 
 export const userLogin = async (data) => {
-    try{
+    try {
         return await axios.post(`${URL}/login`, data)
-    }catch(error){
+    } catch (error) {
         console.log("Error while login", error)
+    }
+}
+
+export const addProduct = async (data) => {
+    try {
+        console.log(data)
+        return await axios.post(`${URL}/addProduct`, data)
+    } catch (error) {
+        console.log("Error while add products", error)
     }
 }

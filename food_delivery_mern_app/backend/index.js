@@ -1,6 +1,6 @@
 import express from "express"
 import cors from "cors"
-import { loginUser, signIn } from "./controller/controller.js"
+import { addProduct, loginUser, signIn } from "./controller/controller.js"
 import Connection from "./db/db.js"
 
 const app = express()
@@ -16,6 +16,7 @@ app.get("/", (req, res) => {
 })
 app.post('/signin', signIn)
 app.post("/login", loginUser)
+app.post('/addProduct', addProduct)
 
 Connection()
 
