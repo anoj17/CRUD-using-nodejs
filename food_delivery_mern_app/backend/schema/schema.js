@@ -26,4 +26,4 @@ const productSchema = mongoose.Schema({
 const User = mongoose.model('user', userSchema)
 const Product = mongoose.model("product", productSchema)
 
-export default { User, Product }
+export { User, Product }

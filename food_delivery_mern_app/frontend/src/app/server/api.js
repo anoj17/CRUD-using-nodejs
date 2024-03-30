@@ -6,7 +6,7 @@ const URL = 'http://localhost:8000';
 
 export const signIn = async (data) => {
     try {
-        console.log(data)
+        // console.log(data)
         return await axios.post(`${URL}/signin`, data,)
         // {
         //     headers: {
@@ -29,9 +29,17 @@ export const userLogin = async (data) => {
 
 export const addProduct = async (data) => {
     try {
-        console.log(data)
+        // console.log(data)
         return await axios.post(`${URL}/addProduct`, data)
     } catch (error) {
         console.log("Error while add products", error)
+    }
+}
+
+export const getData = async () => {
+    try{
+       return await axios.get(`${URL}/products`)
+    }catch(error){
+        console.log("Error while fetch data", error)
     }
 }

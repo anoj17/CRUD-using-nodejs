@@ -56,11 +56,12 @@ const NewProduct = () => {
     const submitData = (e: Event) => {
         e.preventDefault()
 
-        const {name, price, image, category } = data
+        const { name, price, image, category } = data
 
-        if(name && price && image && category){
+        if (name && price && image && category) {
             mutate(data)
-        }else{
+            setData({ name: "", price: "", image: "", category: "", description: "" })
+        } else {
             toast("fill the required field!")
         }
 
@@ -73,9 +74,10 @@ const NewProduct = () => {
                 <input type="text" name="name" value={data.name} onChange={changeHandle} className="py-1 rounded-md focus:outline-none px-2 bg-slate-300 my-1" />
 
                 <label htmlFor="category">Category</label>
-                <select name="category" onChange={changeHandle} className="py-1 rounded-md focus:outline-none px-2 bg-slate-300 my-1">
+                <select name="category" value={data.category} onChange={changeHandle} className="py-1 rounded-md focus:outline-none px-2 bg-slate-300 my-1">
                     <option value={"value"}>Select Cagegory</option>
                     <option value={"fruits"}>Fruits</option>
+                    <option value={"rice"}>Rice</option>
                     <option value={"cake"}>Cake</option>
                     <option value={"vegetable"}>Vegetables</option>
                     <option value={"ice-cream"}>Ice-Cream</option>
