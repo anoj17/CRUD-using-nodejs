@@ -52,23 +52,8 @@ const SighUp = () => {
       alert("password and confirm password cannot matches")
       return;
     }
-
-    // const formData = new FormData()
-
-    // formData.append('fname', data.fname)
-    // formData.append('lname', data.lname)
-    // formData.append('email', data.email)
-    // formData.append('password', data.password)
-    // formData.append('cpassword', data.cpassword)
-    // formData.append('image', image)
-    // useEffect(() => {
-    // }, [image]);
-
     mutate(data)
-
-    // mutate(data)
-    // setImage(profileImage)
-    console.log(data)
+    // console.log(data)
   }
 
   const showPassword = () => {

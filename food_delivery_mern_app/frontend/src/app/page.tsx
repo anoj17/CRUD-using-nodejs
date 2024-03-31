@@ -16,7 +16,6 @@ import CategoryList from '@/components/CategoryList';
 
 const page = () => {
 
-  // const [allData, setAllData] = useState()
 
   const dispatch = useDispatch()
   const productData = useSelector((state: any) => state.product.productList)
@@ -25,7 +24,10 @@ const page = () => {
 
   const loadingArray = new Array(4).fill(null)
 
-  const categoryList = [...new Set(productData.map((list)=>list.category))]
+  // const selectData = useSelector((state:any)=>state.state.selectCategory)
+  // console.log(selectData)
+  const categoryList = [...new Set(productData.map((list) => list.category))]
+  // console.log(categoryList)
 
   const ref = useRef()
 
@@ -46,10 +48,20 @@ const page = () => {
       console.log(error)
     }
   })
+
+  const [selectData, setSelectData] = useState(productData)
+  console.log(productData)
+  const selectCategory = (category: string) => {
+    const result = productData.filter((item: any) => {
+      return item.category === category
+    })
+    setSelectData(result)
+  }
+
   return (
     <div className='p-3 px-6'>
       <div className='md:flex gap-3'>
-        <div className=' md:w-1/2 py-3'>
+        <div className=' md:w-1/2 py-2'>
           <div className='flex gap-2 rounded-full w-52 px-5 justify-center items-center bg-white shadow drop-shadow-md'>
             <p className='font-semibold text-[.9rem]'>Home Delivery</p>
             <Image src={cycle}
@@ -108,9 +120,30 @@ const page = () => {
           }
         </div>
       </div>
+      <div className='py-14 mt-5'>
+        <h1 className='text-4xl text-center font-bold'>Your <span className='text-red-600'>Choice</span></h1>
+        <div className='flex pt-8 flex-wrap md:pl-0 gap-4 items-center justify-center'>
+          {
+            categoryList[0] && categoryList.map((item: any) => (
+              <CategoryList category={item}
+                selectCategory={() => selectCategory(item)}
+              />
+            ))
+          }
+        </div>
+      </div>
       <div>
-        <div className='flex gap-4'>
-          <CategoryList category='fruit' />
+        <div className='flex flex-wrap gap-6 justify-center items-center'>
+          {
+             selectData.map((item: any) => (
+              <ProductCategory key={item._id}
+                name={item.name}
+                price={item.price}
+                category={item.category}
+                image={item.image}
+              />
+            )) 
+          }
         </div>
       </div>
     </div>

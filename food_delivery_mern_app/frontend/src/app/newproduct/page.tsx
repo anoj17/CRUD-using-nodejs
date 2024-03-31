@@ -78,9 +78,10 @@ const NewProduct = () => {
                     <option value={"value"}>Select Cagegory</option>
                     <option value={"fruits"}>Fruits</option>
                     <option value={"rice"}>Rice</option>
+                    <option value={"burger"}>Burger</option>
                     <option value={"cake"}>Cake</option>
                     <option value={"vegetable"}>Vegetables</option>
-                    <option value={"ice-cream"}>Ice-Cream</option>
+                    <option value={"icecream"}>IceCream</option>
                     <option value={"dosa"}>Dosa</option>
                     <option value={"pizza"}>Pizza</option>
                 </select>
