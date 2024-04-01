@@ -45,10 +45,12 @@ const Navbar = () => {
           <Heading path='/contact' heading='Contact' changeMenu={() => { }} className='cursor-pointer' />
         </ul>
         <div className='flex lg:space-x-6 space-x-6 md:space-x-5 items-center justify-center'>
+          <Link href={"/cart"}>
           <div className='relative'>
             <FaShoppingCart size={25} className='cursor-pointer text-gray-600' />
             <div className='absolute -top-2 -right-3 p-1 bg-green-500 h-4 w-4 rounded-full flex text-[.7rem] items-center justify-center text-white'>0</div>
           </div>
+          </Link>
           <div>
             <div className='border-2 border-slate-400 rounded-full p-1'>
               <FaUser size={25} className='cursor-pointer text-gray-600'

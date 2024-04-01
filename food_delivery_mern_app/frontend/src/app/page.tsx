@@ -50,7 +50,7 @@ const page = () => {
   })
 
   const [selectData, setSelectData] = useState(productData)
-  console.log(productData)
+  // console.log(productData)
   const selectCategory = (category: string) => {
     const result = productData.filter((item: any) => {
       return item.category === category
@@ -73,7 +73,7 @@ const page = () => {
             />
           </div>
           <div className='py-6'>
-            <h1 className='md:text-6xl text-4xl font-bold text-center'>The Fasted Delivery in <span className='text-red-600'>Your Home</span></h1>
+            <h1 className='md:text-5xl lg:text-6xl text-4xl font-bold text-center'>The Fasted Delivery in <span className='text-red-600'>Your Home</span></h1>
             <p className='py-3 text-slate-600'>Lorem ipsum dolor, sit amet consectetur adipisicing elit. Voluptate facere dicta, qui voluptatum maiores quidem ratione illo aliquid nostrum doloremque porro perspiciatis optio quasi. Tempora saepe quasi nemo culpa minus Lorem ipsum dolor, sit amet consectetur adipisicing elit nostrum doloremque porro perspiciatis optio quasi. Tempora saepe quasi nemo culpa minus Lorem ipsum dolor, sit amet consectetur adipisicing elit.</p>
           </div>
           <button className='py-2 px-5 hover:brightness-80 text-white bg-green-700 rounded-lg'>Order Now</button>
@@ -95,7 +95,7 @@ const page = () => {
           }
         </div>
       </div>
-      <div className='px-9 pb-5 pt-20'>
+      <div className='md:px-4 lg:px-7 pb-5 pt-20'>
         <div className='flex items-center justify-center'>
           <h1 className='font-semibold text-2xl'>Fresh <span className='text-green-800'>Vegetables</span></h1>
           <div className='flex gap-2 ml-auto'>
@@ -107,6 +107,7 @@ const page = () => {
           {
             productListVegetables[0] ? productListVegetables.map((item: any) => (
               <ProductCategory key={item._id}
+                id={item._id}
                 name={item.name}
                 price={item.price}
                 category={item.category}
@@ -135,14 +136,15 @@ const page = () => {
       <div>
         <div className='flex flex-wrap gap-6 justify-center items-center'>
           {
-             selectData.map((item: any) => (
+            selectData.map((item: any) => (
               <ProductCategory key={item._id}
+                id={item._id}
                 name={item.name}
                 price={item.price}
                 category={item.category}
                 image={item.image}
               />
-            )) 
+            ))
           }
         </div>
       </div>

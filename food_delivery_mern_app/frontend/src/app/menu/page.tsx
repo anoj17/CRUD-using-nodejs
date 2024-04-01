@@ -15,6 +15,7 @@ const page = () => {
         {
           productData[0] ? productData.map((item: any) => (
             <ProductCategory key={item._id}
+              id={item._id}
               name={item.name}
               price={item.price}
               category={item.category}
