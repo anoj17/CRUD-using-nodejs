@@ -2,6 +2,8 @@ import Image from 'next/image'
 import React from 'react'
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useDispatch } from 'react-redux'
+import { addCartItem } from '../app/redux/productSlice'
 
 interface IAppProps {
     price: string,
@@ -13,8 +15,17 @@ interface IAppProps {
 
 const ProductCategory = ({ price, name, category, image, id }: IAppProps) => {
 
-    const handleScroll = (e) => {
+    const dispatch = useDispatch()
+
+    const handleScroll = (e:any) => {
         e.stopPropagation()
+        dispatch(addCartItem({
+            _id: id,
+            name: name,
+            category: category,
+            price: price,
+            image: image
+        }))
     }
     // console.log(id)
     return <>

@@ -15,13 +15,13 @@ import { logoutRedux } from '../app/redux/authSlice'
 const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [showHam, setShowHam] = useState(false)
-  // const [changeLogin, setChangeLogin] = useState(false)
 
-
+  const cartNumber = useSelector((state:any)=>state.product.cartSlice)
+  // console.log(cartNumber)
 
   const dispatch = useDispatch()
 
-  const { isAuthenticated } = useSelector(state => state.auth)
+  const { isAuthenticated } = useSelector((state:any) => state.auth)
   // console.log(userData)
 
   const handleShowMenu = () => {
@@ -48,7 +48,7 @@ const Navbar = () => {
           <Link href={"/cart"}>
           <div className='relative'>
             <FaShoppingCart size={25} className='cursor-pointer text-gray-600' />
-            <div className='absolute -top-2 -right-3 p-1 bg-green-500 h-4 w-4 rounded-full flex text-[.7rem] items-center justify-center text-white'>0</div>
+            <div className='absolute -top-2 -right-3 p-1 bg-green-500 h-4 w-4 rounded-full flex text-[.7rem] items-center justify-center text-white'>{cartNumber.length}</div>
           </div>
           </Link>
           <div>
