@@ -50,12 +50,14 @@ const page = () => {
   })
 
   const [selectData, setSelectData] = useState(productData)
+  const [active, setActive] = useState(false)
   // console.log(productData)
   const selectCategory = (category: string) => {
     const result = productData.filter((item: any) => {
       return item.category === category
     })
     setSelectData(result)
+    setActive(true)
   }
 
   return (
@@ -126,7 +128,8 @@ const page = () => {
         <div className='flex pt-8 flex-wrap md:pl-0 gap-4 items-center justify-center'>
           {
             categoryList[0] && categoryList.map((item: any) => (
-              <CategoryList category={item}
+              <CategoryList category={item} key={item}
+                isActive={item.toLowerCase() === active.toLowerCase()}
                 selectCategory={() => selectCategory(item)}
               />
             ))
