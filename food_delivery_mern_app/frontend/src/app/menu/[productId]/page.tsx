@@ -10,6 +10,15 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ImSpoonKnife } from "react-icons/im";
 import { addCartItem } from '@/app/redux/productSlice';
 
+interface iAppProps {
+    _id: any,
+    name: string,
+    price: string,
+    category: string,
+    image: string,
+    description: string,
+}
+
 const page = () => {
 
     const params = useParams()
@@ -18,10 +27,9 @@ const page = () => {
 
     const productData = useSelector((state: any) => state.product.productList)
 
-    const categoryList = [...new Set(productData.map((list) => list.category))]
+    const categoryList = [...new Set(productData.map((list: any) => list.category))]
 
-    const [displayProduct, setDisplayProduct] = useState(null)
-    console.log(displayProduct)
+    const [displayProduct, setDisplayProduct] = useState<iAppProps | null>(null);
 
     useEffect(() => {
         if (params.productId && productData) {
@@ -34,7 +42,7 @@ const page = () => {
         return <div className=' h-[90vh]  w-full flex justify-center items-center'><HomeCard /></div>
     }
 
-    const handleScroll = (e:any) => {
+    const handleScroll = (e: any) => {
         dispatch(addCartItem({
             _id: displayProduct._id,
             name: displayProduct.name,
@@ -66,8 +74,8 @@ const page = () => {
             <h1 className='text-4xl text-center font-bold'>Related <span className='text-red-600'>Product</span></h1>
             <div className='flex pt-8 flex-wrap md:pl-0 gap-4 items-center justify-center'>
                 {
-                    categoryList[0] && categoryList.map((item: any) => (
-                        <div className='flex flex-col cursor-pointer'>
+                   categoryList.map((item: any) => (
+                        <div className='flex flex-col cursor-pointer' key={item._id}>
                             <div className='bg-yellow-600 h-16 w-16 md:h-20 md:w-20 flex justify-center items-center rounded-full text-white'>
                                 <ImSpoonKnife size={35} />
                             </div>
