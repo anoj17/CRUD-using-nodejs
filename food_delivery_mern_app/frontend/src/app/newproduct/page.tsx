@@ -21,9 +21,9 @@ const NewProduct = () => {
 
     const { mutate } = useMutation(['product'], addProduct, {
         onSuccess: res => {
-            console.log(res.data)
-            if (res.data.alert) {
-                toast(res.data.message)
+            console.log(res?.data)
+            if (res?.data.alert) {
+                toast(res?.data.message)
             }
         },
         onError: error => {
@@ -31,7 +31,7 @@ const NewProduct = () => {
         }
     })
 
-    const changeHandle = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const changeHandle = (e:any) => {
         const { name, value } = e.target
 
         setData((prev: any) => {
@@ -42,8 +42,8 @@ const NewProduct = () => {
         })
     }
 
-    const uploadImage = async (e: Event) => {
-        const datas = await ImageToBase64(e.target.files[0])
+    const uploadImage = async (e: any) => {
+        const datas = await ImageToBase64(e?.target?.files[0])
         // console.log(datas)
         setData((prev: any) => {
             return {
@@ -53,7 +53,7 @@ const NewProduct = () => {
         })
     }
 
-    const submitData = (e: Event) => {
+    const submitData = (e: any) => {
         e.preventDefault()
 
         const { name, price, image, category } = data

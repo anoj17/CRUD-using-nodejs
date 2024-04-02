@@ -18,7 +18,7 @@ const SighUp = () => {
   const [image, setImage] = useState()
   const router = useRouter()
 
-  const ref = useRef(null)
+  const ref = useRef<HTMLInputElement>(null)
 
   const form = useForm({
     defaultValues: {
@@ -61,8 +61,9 @@ const SighUp = () => {
   }
 
   const selectProfile = () => {
-    ref.current.click()
-    // console.log(ref)
+    if (ref.current) {
+      ref.current.click();
+  }
   }
 
   const changeProfile = (e: any) => {

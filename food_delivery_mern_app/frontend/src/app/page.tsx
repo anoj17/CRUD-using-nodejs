@@ -26,17 +26,21 @@ const page = () => {
 
   // const selectData = useSelector((state:any)=>state.state.selectCategory)
   // console.log(selectData)
-  const categoryList = [...new Set(productData.map((list) => list.category))]
+  const categoryList = [...new Set(productData.map((list:any) => list.category))]
   // console.log(categoryList)
 
-  const ref = useRef()
+  const ref = useRef<HTMLInputElement>(null)
 
   const nextProduct = () => {
+    if(ref.current){
     ref.current.scrollLeft += 200
+    }
   }
 
   const prevProduct = () => {
-    ref.current.scrollLeft -= 200
+    if(ref.current){
+      ref.current.scrollLeft -= 200
+      }
   }
 
   useQuery(['get'], getData, {
@@ -127,7 +131,7 @@ const page = () => {
         <h1 className='text-4xl text-center font-bold'>Your <span className='text-red-600'>Choice</span></h1>
         <div className='flex pt-8 flex-wrap md:pl-0 gap-4 items-center justify-center'>
           {
-            categoryList[0] && categoryList.map((item: any) => (
+            categoryList.map((item: any) => (
               <CategoryList category={item} key={item}
                 isActive={item.toLowerCase() === active}
                 selectCategory={() => selectCategory(item)}

@@ -31,7 +31,7 @@ const Navbar = () => {
   const handleLogOut = () => {
     console.log("logout successfully!")
     setShowMenu(!showMenu)
-    dispatch(logoutRedux())
+    dispatch(logoutRedux({}))
   }
 
   return <>

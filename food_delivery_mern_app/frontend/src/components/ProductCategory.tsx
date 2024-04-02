@@ -27,10 +27,9 @@ const ProductCategory = ({ price, name, category, image, id }: IAppProps) => {
             image: image
         }))
     }
-    // console.log(id)
     return <>
         <div className=' bg-white shadow mb-3 drop-shadow-md rounded-lg'>
-            <Link href={`/menu/${id}`} onClick={() => window.scrollTo({ top: '0', behavior: 'smooth' })}>
+            <Link href={`/menu/${id}`} onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}>
                 <div className='flex relative pt-4 group cursor-pointer items-center justify-center min-w-[240px] px-3 flex-col flex-wrap'>
                     <Image src={image} alt='imageItem' height={150} width={150} />
                     <p className='text-center capitalize pt-2 text-gray-500 text-md'>{name}</p>
