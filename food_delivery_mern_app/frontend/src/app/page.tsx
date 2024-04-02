@@ -129,7 +129,7 @@ const page = () => {
           {
             categoryList[0] && categoryList.map((item: any) => (
               <CategoryList category={item} key={item}
-                isActive={item.toLowerCase() === active.toLowerCase()}
+                isActive={item.toLowerCase() === active}
                 selectCategory={() => selectCategory(item)}
               />
             ))

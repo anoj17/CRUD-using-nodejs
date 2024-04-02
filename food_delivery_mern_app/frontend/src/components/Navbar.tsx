@@ -16,12 +16,12 @@ const Navbar = () => {
   const [showMenu, setShowMenu] = useState(false)
   const [showHam, setShowHam] = useState(false)
 
-  const cartNumber = useSelector((state:any)=>state.product.cartSlice)
+  const cartNumber = useSelector((state: any) => state.product.cartSlice)
   // console.log(cartNumber)
 
   const dispatch = useDispatch()
 
-  const { isAuthenticated } = useSelector((state:any) => state.auth)
+  const { isAuthenticated } = useSelector((state: any) => state.auth)
   // console.log(userData)
 
   const handleShowMenu = () => {
@@ -35,7 +35,7 @@ const Navbar = () => {
   }
 
   return <>
-    <div className='py-3 shadow-lg px-8 lg:px-14 md:px-6 flex bg-white items-center justify-between'>
+    <div className='py-4 shadow-lg px-8 lg:px-14 md:px-6 flex bg-white items-center justify-between'>
       <Image src={logo} alt='logo' height={200} width={100} />
       <div className='flex space-x-20 md:space-x-10'>
         <ul className='md:flex lg:space-x-9 hidden md:space-x-5 items-center justify-center'>
@@ -46,10 +46,10 @@ const Navbar = () => {
         </ul>
         <div className='flex lg:space-x-6 space-x-6 md:space-x-5 items-center justify-center'>
           <Link href={"/cart"}>
-          <div className='relative'>
-            <FaShoppingCart size={25} className='cursor-pointer text-gray-600' />
-            <div className='absolute -top-2 -right-3 p-1 bg-green-500 h-4 w-4 rounded-full flex text-[.7rem] items-center justify-center text-white'>{cartNumber.length}</div>
-          </div>
+            <div className='relative'>
+              <FaShoppingCart size={25} className='cursor-pointer text-gray-600' />
+              <div className='absolute -top-2 -right-3 p-1 bg-green-500 h-4 w-4 rounded-full flex text-[.7rem] items-center justify-center text-white'>{cartNumber.length}</div>
+            </div>
           </Link>
           <div>
             <div className='border-2 border-slate-400 rounded-full p-1'>
@@ -60,10 +60,10 @@ const Navbar = () => {
 
             {
               showMenu && (
-                <div className={`${!isAuthenticated ? 'right-9' : 'right-3'} absolute bg-white py-2 px-4 flex flex-col shadow drop-shadow-md`}>
+                <div className={`${!isAuthenticated ? 'right-9' : 'right-3'} absolute bg-white py-2 px-4 flex flex-col shadow z-50 drop-shadow-md`}>
                   {
                     isAuthenticated &&
-                    <Link href='/newproduct'><button onClick={() => setShowMenu(!showMenu)}>New Product</button></Link>
+                    <Link href='/newproduct'><button onClick={() => setShowMenu(!showMenu)}>Add Product</button></Link>
                   }
                   {
                     !isAuthenticated ?
@@ -85,7 +85,7 @@ const Navbar = () => {
         </div>
       </div>
     </div>
-    <div className={`${showHam ? 'visible h-full' : 'hidden'} w-full bg-black/80 z-[500] backdrop-blur-md md:hidden `}>
+    <div className={`${showHam ? 'visible h-full' : 'hidden'} fixed top-[70px] left-0 w-full bg-gray-700 z-50 backdrop-blur-md md:hidden `}>
       <ul className='flex flex-col space-y-6 pt-4 items-center justify-center'>
         <Heading path='/' heading='Home' changeMenu={() => setShowHam(!showHam)} className='text-white cursor-pointer' />
         <Heading path='/about' heading='About' changeMenu={() => setShowHam(!showHam)} className='text-white cursor-pointer' />
