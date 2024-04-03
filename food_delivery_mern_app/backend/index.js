@@ -8,7 +8,7 @@ dotenv.config()
 const app = express()
 
 app.use(cors({
-    origin: ["https://food-delivery-frontend-33o3lkc09-budhathokianojs-projects.vercel.app"],
+    origin: ["https://food-delivery-frontend-alpha.vercel.app"],
     methods: ["GET,POST"],
     credentials: true,
     optionsSuccessStatus: 200
