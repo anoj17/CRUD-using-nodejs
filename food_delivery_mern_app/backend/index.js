@@ -9,7 +9,7 @@ const app = express()
 
 app.use(cors({
     origin: ["https://food-delivery-frontend-alpha.vercel.app"],
-    methods: ["GET,POST"],
+    methods: ["GET, POST, PUT, DELETE, OPTIONS"],
     credentials: true,
     optionsSuccessStatus: 200
 }))
