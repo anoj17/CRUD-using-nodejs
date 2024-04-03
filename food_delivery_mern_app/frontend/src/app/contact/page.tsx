@@ -1,6 +1,5 @@
 import ContactForm from '@/components/ContactForm';
 import ContactItem from '@/components/ContactItem'
-import GoogleMap from '@/components/GoogleMap';
 import React from 'react'
 import { FaPhone } from "react-icons/fa";
 import { FaLocationDot } from "react-icons/fa6";
