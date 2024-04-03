@@ -7,7 +7,7 @@ dotenv.config()
 
 const app = express()
 
-app.use(cors({origin: ["https://food-delivery-frontend-2o0u3diml-budhathokianojs-projects.vercel.app"],methods: ["GET,POST"]}))
+app.use(cors({origin: ["https://food-delivery-frontend-alpha.vercel.app"],methods: ["GET,POST"]}))
 
 app.use(express.json({limit: "10mb"}))
 
