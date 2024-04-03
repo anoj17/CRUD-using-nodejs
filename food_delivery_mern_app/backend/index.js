@@ -2,6 +2,8 @@ import express from "express"
 import cors from "cors"
 import { addProduct, fetchData, loginUser, signIn } from "./controller/controller.js"
 import Connection from "./db/db.js"
+import dotenv from 'dotenv'
+dotenv.config()
 
 const app = express()
 

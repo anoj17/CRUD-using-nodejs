@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const Connection = async () => {
-    const URL = "mongodb+srv://foodstroe:anoj123@foodstore.e7utoqt.mongodb.net/"
+    const URL = process.env.MONGOOSE_URL;
 
     try{
         await mongoose.connect(URL)
