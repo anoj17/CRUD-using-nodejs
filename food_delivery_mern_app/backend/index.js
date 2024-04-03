@@ -20,10 +20,6 @@ const PORT = process.env.PORT || 8000
 
 app.get("/", (req, res) => {
     res.send("server is running")
-    res.setHeader("Access-Control-Allow-Origin", "*")
-    res.setHeader("Access-Control-Allow-Credentials", "true");
-    res.setHeader("Access-Control-Max-Age", "1800");
-    res.setHeader("Access-Control-Allow-Headers", "content-type");
 })
 app.post('/signin', signIn)
 app.post("/login", loginUser)
