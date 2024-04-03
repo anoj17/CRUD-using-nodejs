@@ -35,7 +35,7 @@ const Navbar = () => {
   }
 
   return <>
-    <div className='py-4 shadow-lg px-8 lg:px-14 md:px-6 flex bg-white items-center justify-between'>
+    <div className='py-3 shadow-lg px-8 lg:px-14 md:px-6 flex bg-white items-center justify-between'>
       <Image src={logo} alt='logo' height={200} width={100} />
       <div className='flex space-x-20 md:space-x-10'>
         <ul className='md:flex lg:space-x-9 hidden md:space-x-5 items-center justify-center'>
