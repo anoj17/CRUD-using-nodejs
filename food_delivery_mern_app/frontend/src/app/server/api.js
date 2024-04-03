@@ -2,8 +2,6 @@ import axios from 'axios'
 
 const URL = process.env.NEXT_PUBLIC_URL;
 
-// l3JnRCjgmO5jzUij
-
 export const signIn = async (data) => {
     try {
         // console.log(data)

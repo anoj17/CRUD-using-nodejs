@@ -11,7 +11,7 @@ export const productSlices = createSlice({
     initialState,
     reducers: {
         setDataProduct: (state, action) => {
-            // console.log(action)
+            console.log(action.payload)
             state.productList = [...action.payload]
         },
         addCartItem: (state, action) => {
