@@ -17,7 +17,7 @@ const app = express()
 // ))
 
 app.use(cors({
-    origin: 'https://food-delivery-frontend-alpha.vercel.app/',
+    origin: 'https://food-delivery-frontend-alpha.vercel.app',
     credentials: true // If you need to send cookies or authorization headers
   }));
 
