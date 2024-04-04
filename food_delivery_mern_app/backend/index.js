@@ -18,8 +18,9 @@ const app = express()
 
 app.use(cors({
     origin: 'https://food-delivery-frontend-alpha.vercel.app',
+    // origin: "http://localhost:3000",
     credentials: true // If you need to send cookies or authorization headers
-  }));
+}));
 
 
 app.use(express.json({ limit: "10mb" }))
@@ -27,7 +28,7 @@ app.use(express.json({ limit: "10mb" }))
 const PORT = process.env.PORT || 8000
 
 app.get("/", (req, res) => {
-    res.send("server is running on"+PORT)
+    res.send("server is running on" + PORT)
 })
 app.post('/signin', signIn)
 app.post("/login", loginUser)
