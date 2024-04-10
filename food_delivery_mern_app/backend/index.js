@@ -22,18 +22,9 @@ const app = express()
 
 app.use('/uploads', express.static('uploads'))
 
-// app.use(cors(
-//     {
-//         origin: ["*"],
-//         methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"],
-//         credentials: true,
-//         optionsSuccessStatus: 200
-//     }
-// ))
-
 app.use(cors({
-    origin: 'https://food-delivery-frontend-alpha.vercel.app',
-    // origin: "http://localhost:3000",
+    // origin: 'https://food-delivery-frontend-alpha.vercel.app',
+    origin: "http://localhost:3000",
     credentials: true // If you need to send cookies or authorization headers
 }));
 

@@ -8,6 +8,9 @@ const nextConfig = {
                 protocol: 'https',
                 hostname: '**',
             },
+            {
+                hostname: 'food-delivery-backend-henna.vercel.app',
+            },
 
         ],
     },
