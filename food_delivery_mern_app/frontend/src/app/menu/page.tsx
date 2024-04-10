@@ -8,7 +8,7 @@ import { useSelector } from 'react-redux'
 const page = () => {
 
   const productData = useSelector((state: any) => state.product.productList)
-  console.log(productData)
+  // console.log(productData)
   return (
     <div className='px-5 py-3 bg-slate-200'>
       <div className='flex flex-wrap max-w-[85%] mx-auto gap-6 justify-center items-center'>

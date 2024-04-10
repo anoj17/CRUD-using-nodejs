@@ -46,7 +46,7 @@ const page = () => {
   useQuery(['get'], getData, {
     onSuccess: res => {
       dispatch(setDataProduct(res?.data))
-      // console.log(productListVegetables)
+      // console.log(res.data)
     },
     onError: error => {
       console.log(error)
@@ -73,7 +73,6 @@ const page = () => {
             <Image src={cycle}
               alt='imageLogo'
               className='bg-transparent'
-              style={{ backgroundColor: 'transparent' }}
               height={50}
               width={50}
             />

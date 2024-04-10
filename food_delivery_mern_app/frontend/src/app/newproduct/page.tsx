@@ -18,6 +18,9 @@ const NewProduct = () => {
         price: "",
         description: ""
     })
+    const [image, setImage] = useState({
+        imageField: ""
+    })
 
     const { mutate } = useMutation(['product'], addProduct, {
         onSuccess: res => {
@@ -44,23 +47,43 @@ const NewProduct = () => {
 
     const uploadImage = async (e: any) => {
         const datas = await ImageToBase64(e?.target?.files[0])
+
         // console.log(datas)
+        setImage((prev: any) => {
+            return {
+                ...prev,
+                imageField: datas
+            }
+        })
+
         setData((prev: any) => {
             return {
                 ...prev,
-                image: datas
+                image: e.target.files[0]
             }
         })
+        // console.log(e.target.files[0])
+       
     }
 
     const submitData = (e: any) => {
         e.preventDefault()
 
         const { name, price, image, category } = data
+        
+        const formData = new FormData()
+
+        formData.append('name', name)
+        formData.append('price',price)
+        formData.append("category",category)
+        formData.append('image',image)
+
+        console.log(data)
 
         if (name && price && image && category) {
-            mutate(data)
+            mutate(formData)
             setData({ name: "", price: "", image: "", category: "", description: "" })
+            setImage({imageField: ''})
         } else {
             toast("fill the required field!")
         }
@@ -90,7 +113,7 @@ const NewProduct = () => {
                     <div className="h-40 flex items-center cursor-pointer justify-center bg-slate-200">
 
                         {
-                            data.image ? <img src={data.image} alt="image" className="h-full" /> :
+                            image.imageField ? <img src={image.imageField} alt="image" className="h-full" /> :
                                 <IoCloudUpload size={50} className="" />
                         }
 

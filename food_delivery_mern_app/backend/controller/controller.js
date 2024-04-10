@@ -1,4 +1,5 @@
 import { User, Product } from "../schema/schema.js"
+import fs from 'fs'
 // import Product from "../schema/schema.js"
 // import multer from "multer"
 
@@ -48,7 +49,6 @@ export const loginUser = async (req, res) => {
           password: userEmail.password,
           // image: userEmail.image
         }
-        console.log(dataSend)
         return res.status(201).json({ message: "Login successfully!", alert: true, dataSend })
       } else {
         return res.status(201).json({ message: "username and password incorrect", alert: false })
@@ -63,14 +63,17 @@ export const loginUser = async (req, res) => {
 }
 
 export const addProduct = async (req, res) => {
+  console.log(req.body)
   try {
-    const { name, image, description, price, category } = req.body
+    const image = req.file ? req.file.filename : null;
+    console.log(image)
+    const { name, description, price, category } = req.body
     // console.log(name, description)
 
     const product = new Product({
       name,
       category,
-      image,
+      image, 
       price,
       description
     })
@@ -86,7 +89,7 @@ export const addProduct = async (req, res) => {
 export const fetchData = async (req, res) => {
   try {
     const dataFetch = await Product.find({})
-    //  console.log(dataFetch)
+     console.log(dataFetch)
     res.status(201).json(dataFetch)
   } catch (error) {
     return res.status(404).json({ message: "Error while fetch data from backend" })

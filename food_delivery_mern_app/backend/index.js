@@ -3,9 +3,24 @@ import cors from "cors"
 import { addProduct, fetchData, loginUser, signIn } from "./controller/controller.js"
 import Connection from "./db/db.js"
 import dotenv from 'dotenv'
+import multer from "multer"
 dotenv.config()
 
+const storage = multer.diskStorage({
+    destination: function (req, file, cb) {
+      cb(null, 'uploads/')
+    },
+    filename: function (req, file, cb) {
+      const uniqueSuffix = Date.now();
+      cb(null, uniqueSuffix + file.originalname)
+    }
+  })
+  
+  const upload = multer({ storage: storage })
+
 const app = express()
+
+app.use('/uploads', express.static('uploads'))
 
 // app.use(cors(
 //     {
@@ -17,8 +32,8 @@ const app = express()
 // ))
 
 app.use(cors({
-    origin: 'https://food-delivery-frontend-alpha.vercel.app',
-    // origin: "http://localhost:3000",
+    // origin: 'https://food-delivery-frontend-alpha.vercel.app',
+    origin: "http://localhost:3000",
     credentials: true // If you need to send cookies or authorization headers
 }));
 
@@ -32,7 +47,7 @@ app.get("/", (req, res) => {
 })
 app.post('/signin', signIn)
 app.post("/login", loginUser)
-app.post('/addProduct', addProduct)
+app.post('/addProduct', upload.single('image'), addProduct)
 app.get('/products', fetchData)
 
 Connection()
