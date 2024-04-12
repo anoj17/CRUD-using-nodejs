@@ -17,7 +17,7 @@ const page = () => {
 
         {
           productData[0] ?
-            <div className='w-[330px] md:w-[500px]'>
+            <div className='w-[330px] md:w-[450px]'>
               {
                 productData[0] && productData.map((item: any) => (
                   <CartItem key={item._id}
