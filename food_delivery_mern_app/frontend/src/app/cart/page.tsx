@@ -13,7 +13,7 @@ const page = () => {
   return (
     <div className='bg-slate-200 flex flex-col px-4 md:px-0 justify-center items-center w-full py-4'>
       <h1 className='text-center py-3 text-3xl md:text-4xl font-bold'>Cart Product <span className='text-red-600'>List</span></h1>
-      <div className='justify-center items-center w-full'>
+      <div className='flex justify-center items-center w-full'>
 
         {
           productData[0] ?
