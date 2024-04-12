@@ -10,7 +10,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { ImSpoonKnife } from "react-icons/im";
 import { addCartItem } from '@/app/redux/productSlice';
 
-const URL = process.env.NEXT_PUBLIC_IMAGE_URL;
+// const URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 interface iAppProps {
     _id: any,
@@ -58,7 +58,7 @@ const page = () => {
         <div className='w-full bg-slate-200 flex justify-center items-center'>
             <div className='md:flex-row space-y-3 py-4 bg-white my-4 shadow flex flex-col lg:w-[600px] md:h-[220px] drop-shadow-md rounded-lg group cursor-pointer items-center justify-center'>
                 <div className='w-1/2 md:p-3 overflow-hidden'>
-                    <Image src={URL+displayProduct.image} className='hover:scale-[1.1] transition-all' alt='imageItem' height={200} width={200} />
+                    <Image src={displayProduct.image} className='hover:scale-[1.1] transition-all' alt='imageItem' height={200} width={200} />
                 </div>
                 <div className='w-1/2 flex flex-col md:items-start items-center justify-center'>
                     <p className=' text-2xl capitalize pt-2 text-gray-500 text-md'>{displayProduct.name}</p>

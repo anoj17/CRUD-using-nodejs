@@ -2,19 +2,15 @@
 const nextConfig = {
     reactStrictMode: true,
     images: {
-        domains: ['localhost'],
+        formats: ['image/avif', 'image/webp'],
+
         remotePatterns: [
             {
-                protocol: 'https',
-                hostname: '**',
+                hostname: 'res.cloudinary.com',
+                // domains: ['res.cloudinary.com'],
             },
-            {
-                hostname: 'food-delivery-backend-henna.vercel.app',
-            },
-
         ],
     },
 };
 
 export default nextConfig;
-

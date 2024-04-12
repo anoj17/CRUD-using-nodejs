@@ -6,7 +6,7 @@ import { MdDelete } from "react-icons/md";
 import { useDispatch } from 'react-redux';
 import { deleteCartItem, increaseQnt, decreaseQnt } from '@/app/redux/productSlice';
 
-const URL = process.env.NEXT_PUBLIC_IMAGE_URL;
+// const URL = process.env.NEXT_PUBLIC_IMAGE_URL;
 
 interface iAppProps {
     name: string,
@@ -23,7 +23,7 @@ const CartItem = ({ name, id, image, category, price, qty, total }: iAppProps) =
     return (
         <div className='md:flex-row md:space-y-3 relative py-4 md:w-[800px] w-full bg-white my-4 shadow flex flex-col items-center justify-center drop-shadow-md rounded-lg'>
             <div className='md:w-1/3 overflow-hidden'>
-                <Image src={URL+image} className='hover:scale-[1.1] ml-5 transition-all' alt='imageItem' height={200} width={200} />
+                <Image src={image} className='hover:scale-[1.1] ml-5 transition-all' alt='imageItem' height={200} width={200} />
             </div>
             <div className=' flex space-y-2 flex-col md:items-start items-center justify-center'>
                 <p className=' text-2xl capitalize pt-2 text-gray-500 text-md'>{name}</p>

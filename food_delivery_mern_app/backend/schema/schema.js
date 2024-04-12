@@ -1,4 +1,4 @@
-import mongoose from "mongoose";
+import mongoose, { trusted } from "mongoose";
 
 
 const userSchema = mongoose.Schema({
@@ -31,7 +31,10 @@ const productSchema = mongoose.Schema({
     type: String,
     required: true
   },
-  image: String,
+  image: {
+    type: String,
+    required: true
+  },
   price: {
     type: String,
     required: true

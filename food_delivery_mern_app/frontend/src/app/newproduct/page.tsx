@@ -14,7 +14,7 @@ const NewProduct = () => {
     const [data, setData] = useState({
         name: "",
         category: "fruits",
-        image: "",
+        image: '',
         price: "",
         description: ""
     })
@@ -62,26 +62,24 @@ const NewProduct = () => {
                 image: e.target.files[0]
             }
         })
-        // console.log(e.target.files[0])
        
     }
 
     const submitData = (e: any) => {
         e.preventDefault()
 
-        const { name, price, image, category } = data
+        const { name, price, image, category, description } = data
         
-        const formData = new FormData()
+        // const formData = new FormData()
 
-        formData.append('name', name)
-        formData.append('price',price)
-        formData.append("category",category)
-        formData.append('image',image)
-
-        console.log(data)
-
+        // formData.append('name', name)
+        // formData.append('price',price)
+        // formData.append("category",category)
+        // formData.append('image',image)
+        // formData.append("description", description)
+        
         if (name && price && image && category) {
-            mutate(formData)
+            mutate(data)
             setData({ name: "", price: "", image: "", category: "", description: "" })
             setImage({imageField: ''})
         } else {
