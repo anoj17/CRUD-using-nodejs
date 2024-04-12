@@ -3,7 +3,7 @@ import React from 'react'
 const ContactForm = () => {
     return (
         <div className=''>
-            <form className="flex flex-col w-[400px] md:w-[440px] gap-3 bg-white rounded-md shadow drop-shadow-sm px-5 md:px-10 py-3">
+            <form className="flex flex-col w-[330px] md:w-[440px] gap-3 bg-white rounded-md shadow drop-shadow-sm px-5 md:px-10 py-3">
                 <h1 className='py-2 text-2xl font-semibold text-center'>Drop us a line</h1>
                 <input type="text" name="name"
                     placeholder='name'
