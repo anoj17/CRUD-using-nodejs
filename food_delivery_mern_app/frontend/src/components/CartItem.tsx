@@ -21,7 +21,7 @@ interface iAppProps {
 const CartItem = ({ name, id, image, category, price, qty, total }: iAppProps) => {
     const dispatch = useDispatch()
     return (
-        <div className='md:flex-row md:space-y-3 relative py-4 md:w-[800px] w-full bg-white my-4 shadow flex flex-col items-center justify-center drop-shadow-md rounded-lg'>
+        <div className='md:flex-row md:space-y-3 relative py-4 md:w-[800px] w-[330px] bg-white my-4 shadow flex flex-col items-center justify-center drop-shadow-md rounded-lg'>
             <div className='md:w-1/3 overflow-hidden'>
                 <Image src={image} className='hover:scale-[1.1] ml-5 transition-all' alt='imageItem' height={200} width={200} />
             </div>
