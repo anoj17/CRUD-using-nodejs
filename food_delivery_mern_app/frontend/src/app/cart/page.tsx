@@ -14,7 +14,7 @@ const page = () => {
     <div className='bg-slate-200 flex flex-col px-4 md:px-20 justify-center items-center w-full py-4'>
       <h1 className='text-center py-3 text-3xl md:text-4xl font-bold'>Cart Product <span className='text-red-600'>List</span></h1>
 
-      <div className='flex justify-center items-center'>
+      <div className='flex justify-center md:w-full items-center'>
         {
           productData[0] ?
             <div className='w-[330px]'>
