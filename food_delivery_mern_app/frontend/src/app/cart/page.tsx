@@ -15,7 +15,7 @@ const page = () => {
       <h1 className='text-center py-3 text-3xl md:text-4xl font-bold'>Cart Product <span className='text-red-600'>List</span></h1>
       {
         productData[0] ?
-          <div className='flex justify-center items-center'>
+          <div className='flex flex-col justify-center items-center'>
             {
               productData[0] && productData.map((item: any) => (
                 <CartItem key={item._id}
