@@ -56,7 +56,7 @@ const page = () => {
 
     return <>
         <div className='w-full bg-slate-200 flex justify-center items-center'>
-            <div className='md:flex-row space-y-3 py-4 bg-white my-4 shadow flex flex-col lg:w-[600px] w-[330px] md:h-[220px] drop-shadow-md rounded-lg group cursor-pointer items-center justify-center'>
+            <div className='md:flex-row space-y-3 py-4 bg-white my-4 shadow flex flex-col md:w-[600px] w-[330px] md:h-[220px] drop-shadow-md rounded-lg group cursor-pointer items-center justify-center'>
                 <div className='w-1/2 md:p-3 overflow-hidden'>
                     <Image src={displayProduct.image} className='hover:scale-[1.1] transition-all' alt='imageItem' height={200} width={200} />
                 </div>
