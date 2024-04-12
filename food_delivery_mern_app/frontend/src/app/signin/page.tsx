@@ -73,7 +73,7 @@ const SighUp = () => {
 
   return <>
 
-    <div className="flex flex-col justify-center h-screen items-center lg:h-[87vh] scrollbar-none overflow-y-scroll lg:mt-1 lg:mx-72 px-20 md:px-10 md:mx-20 mx-0 shadow drop-shadow-sm bg-white pt-44 lg:pt-20 py-6 lg:px-8">
+    <div className="flex flex-col justify-center h-screen items-center lg:h-[87vh] scrollbar-none overflow-y-scroll lg:mt-1 lg:mx-72 px-10 md:px-10 md:mx-20 mx-0 shadow drop-shadow-sm bg-white pt-44 lg:pt-20 py-6 lg:px-8">
 
       <div className="mt-5 w-full sm:max-w-sm">
         <div className="sm:mx-auto flex flex-col items-center justify-center sm:max-w-sm lg:pt-4">
