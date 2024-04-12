@@ -52,7 +52,7 @@ const Login = () => {
 
   return <>
     <div className='overflow-y-hidden h-[85vh]'>
-      <div className="flex flex-col justify-center lg:h-[87vh] pb-20 lg:pb-2 pt-4 lg:pt-0 lg:mx-72 md:mx-20 md:px-10 lg:shadow lg:drop-shadow-sm lg:mt-2 px-20 bg-white lg:px-8">
+      <div className="flex flex-col justify-center lg:h-[87vh] pb-20 lg:pb-2 pt-4 lg:pt-0 lg:mx-72 md:mx-20 md:px-10 lg:shadow lg:drop-shadow-sm lg:mt-2 px-10 bg-white lg:px-8">
         <div className="flex flex-col items-center justify-center">
           <Image className="mx-auto h-16 w-auto bg-fill shadow drop-shadow-lg rounded-full" alt='logo' src={signLogo} />
           {/* <label htmlFor='profileImage'>
