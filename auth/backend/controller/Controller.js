@@ -1,5 +1,4 @@
 
-import { decrypt } from 'dotenv'
 import User from '../schema/Schema.js'
 import bcryptjs from 'bcryptjs'
 import jwt from 'jsonwebtoken'
@@ -60,4 +59,8 @@ export const signIn = async (req, res) => {
   } catch (error) {
     return res.status(400).json({ message: "oops something went wrong!!", alert: false })
   }
+}
+
+export const googleData = async (req,res) =>{
+  console.log("Google hitted***",req.body)
 }

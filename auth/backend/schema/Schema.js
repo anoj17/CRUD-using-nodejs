@@ -6,7 +6,10 @@ const userSchema = mongoose.Schema({
         type: String,
         unique: true
     },
-    password: String
+    password: String,
+    image: {
+        type: String
+    }
 }, {timeStamp: true})
 
 const User = mongoose.model('auth',userSchema)
