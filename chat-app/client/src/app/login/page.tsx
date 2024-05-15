@@ -8,26 +8,52 @@ import { FaEye } from "react-icons/fa";
 import { FaRegEyeSlash } from "react-icons/fa6";
 import { DevTool } from '@hookform/devtools'
 import Link from 'next/link';
+import { useMutation } from 'react-query';
+import { login } from '../api';
+import { useRouter } from 'next/navigation';
+import toast from 'react-hot-toast';
+import { useDispatch, useSelector } from 'react-redux';
+import { loginRedux } from '../redux/authSlice'
 
 const page = () => {
 
     const [showEye, setShowEye] = useState(false)
     const form = useForm()
 
+    const router = useRouter()
+    const dispatch = useDispatch()
+
+    const userData = useSelector((state: any)=> state.auth)
+
+    console.log(userData)
+
+    const {mutate} = useMutation(['loginUser'], login, {
+      onSuccess: res => {
+        toast(res?.data.message)
+        if(res?.data.alert){
+          router.push('/')
+          dispatch(loginRedux(res?.data))
+        }
+      },
+      onError: error => {
+        console.log(error)
+      }
+    })
+
     const{handleSubmit, control, register} = form
 
     const loginUser = (data: any) =>{
-        console.log(data)
+        mutate(data)
     }
 
   return (
-    <div className="mt-5 sm:mx-auto sm:w-full sm:max-w-sm">
+    <div className="pt-7 w-full flex flex-col items-center justify-center ">
 
         <div className='flex flex-col items-center justify-center py-6'>
             <Image src={image} alt='image' height={100} width={100} className=''/>
             <h1 className='py-2 font-semibold text-lg'>LOG IN</h1>
         </div>
-          <form className="space-y-4"
+          <form className="space-y-4 py-5 shadow drop-shadow-5xl rounded-lg w-full px-20 md:w-[500px] md:px-16"
             onSubmit={handleSubmit(loginUser)}
             action="#"
             method="POST">
