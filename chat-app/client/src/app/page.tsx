@@ -25,12 +25,16 @@ const page = () => {
 
     const userData = useSelector((state: any)=> state.auth)
 
+    if(userData.isAuthentication){
+      router.push('/home')
+    }
+
     console.log(userData)
 
     const {mutate} = useMutation(['loginUser'], login, {
       onSuccess: res => {
         toast(res?.data.message)
-        console.log(res?.data)
+        // console.log(res?.data)
         if(res?.data.alert){
           router.push('/home')
           dispatch(loginRedux(res?.data))
