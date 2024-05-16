@@ -38,7 +38,7 @@ const page = () => {
       toast(res?.data.message)
       if(res?.data.alert){
         console.log(res.data)
-        router.push('/login')
+        router.push('/')
       }
     },
     onError: error => {
@@ -173,7 +173,7 @@ const page = () => {
         <div>
           <button type="submit" className="flex w-full justify-center rounded-md bg-indigo-600 px-3 py-1.5 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-indigo-500 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-600">SIGN IN</button>
         </div>
-        <p className='text-[.9rem] text-center'>Already have an account?<Link href={'/login'} className='text-blue-700 underline font-semibold'>Login</Link></p>
+        <p className='text-[.9rem] text-center'>Already have an account?<Link href={'/'} className='text-blue-700 underline font-semibold'>Login</Link></p>
       </form>
     </div>
   )
