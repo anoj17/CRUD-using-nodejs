@@ -35,9 +35,9 @@ const page = () => {
 
   const { mutate } = useMutation(['signin'], Signin, {
     onSuccess: res => {
-      toast(res?.data.message)
-      if(res?.data.alert){
-        console.log(res.data)
+      toast(res?.data?.message)
+      if(res?.data?.alert){
+        console.log(res?.data)
         router.push('/')
       }
     },

@@ -20,7 +20,7 @@ interface RootState {
 
 const ProfileImage = () => {
   const [isShowProfile, setIsShowProfile] = useState(false)
-  const userData = useSelector((state: RootState) => state.auth.user.data)
+  const userData = useSelector((state: RootState) => state.auth.user)
 
   const router = useRouter()
 
@@ -31,24 +31,24 @@ const ProfileImage = () => {
   }
 
   const logout = () => {
+    router.push('/')
     setIsShowProfile(false)
     dispatch(logOutRedux({}))
-    router.push('/')
   }
 
-  if (!userData || !userData.profile) {
+  if (!userData || !userData?.data?.profile) {
     return null
   }
 
   return <>
     <div className='relative'>
       <div>
-        <Image src={userData.profile} onClick={showProfile} alt='profile' height={10} width={10} className='w-8 cursor-pointer h-8 rounded-full' />
+        <Image src={userData?.data?.profile} onClick={showProfile} alt='profile' height={10} width={10} className='w-8 cursor-pointer h-8 rounded-full' />
       </div>
       {
         isShowProfile && <div className='flex flex-col absolute text-white w-[150px] -bottom-20 -right-8'>
           <Link href={`/profile`} className='cursor-pointer border-b py-1 bg-black hover:bg-black/60 pl-2'>Profile</Link>
-          <Link href={'/'} onClick={logout} className='cursor-pointer py-1 pl-2 bg-black hover:bg-black/60'>Log Out</Link>
+          <div onClick={logout} className='cursor-pointer py-1 pl-2 bg-black hover:bg-black/60'>Log Out</div>
         </div>
       }
     </div>

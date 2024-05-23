@@ -8,14 +8,14 @@ import { IoSearch } from "react-icons/io5";
 
 const SideBar = () => {
 
-  const userData = useSelector((state: any) => state.auth.user.data)
+  const userData = useSelector((state: any) => state.auth.user)
   return <>
 
     <div className='lg:w-[400px] lg:h-[90vh] scrollbar-none overflow-scroll shadow drop-shadow-2xl '>
       <div className='flex space-x-3 items-center bg-gray-400 px-3 py-2'>
         <div className='flex space-x-1 cursor-pointer items-center'>
-        <Image src={userData?.profile} alt='avatar' height={30} width={30} className='h-6 w-6 rounded-full' />
-          <h3 className='font-semibold hover:underline text-sm'>{userData?.fname + userData?.lname}</h3>
+        <Image src={userData?.data?.profile} alt='avatar' height={30} width={30} className='h-6 w-6 rounded-full' />
+          <h3 className='font-semibold hover:underline text-sm'>{userData?.data?.fname + userData?.data?.lname}</h3>
         </div>
         <div className='border flex border-gray-700 bg-gray-700 items-center pr-4 rounded-lg'>
           <input type='text'

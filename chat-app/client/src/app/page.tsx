@@ -13,7 +13,7 @@ import { useRouter } from 'next/navigation';
 import toast from 'react-hot-toast';
 import { useDispatch, useSelector } from 'react-redux';
 import { login } from './api';
-import { loginRedux } from './redux/authSlice';
+import { allUser, loginRedux } from './redux/authSlice';
 
 const page = () => {
 
@@ -38,6 +38,7 @@ const page = () => {
         if(res?.data.alert){
           router.push('/home')
           dispatch(loginRedux(res?.data))
+          dispatch(allUser(res?.data?.allUser))
         }
       },
       onError: error => {
