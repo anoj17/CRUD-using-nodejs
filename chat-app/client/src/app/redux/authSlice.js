@@ -18,8 +18,8 @@ export const authSlice = createSlice({
         },
         
         logOutRedux: (state, action) => {
-            state.isAuthentication = false,
-            state.user = null
+            state.user = null,
+            state.isAuthentication = false
         }
     }
 })

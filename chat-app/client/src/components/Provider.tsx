@@ -9,6 +9,7 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 const Provider = ({ children }: { children: ReactNode }) => {
     const queryClient = new QueryClient()
+    
     return (
         <div>
             <QueryClientProvider client={queryClient}>
