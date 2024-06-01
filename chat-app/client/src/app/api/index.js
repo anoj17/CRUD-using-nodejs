@@ -14,7 +14,7 @@ export const Signin = async (data) => {
 export const login = async (data) => {
     // console.log("*************",data)
     try {
-        return await axios.post(`${URL}/login`, data,{
+        return await axios.post(`${URL}/login`, data, {
             headers: {
                 "Content-Type": "application/json"
             },
@@ -35,6 +35,20 @@ export const editProfile = async (data) => {
             withCredentials: true
         })
     } catch (error) {
-        console.log("Data cannot be post while edit profile", error)
+        console.log("Data cannot be post while edit profile", error) 
+    }
+}
+
+export const addFriendUser = async (data) => {
+    // console.log("*************",data, id)
+    try {
+        return await axios.post(`${URL}/addFriend`, data, {
+            headers: {
+                "Content-Type": "application/json"
+            },
+            withCredentials: true
+        })
+    } catch (error) {
+        console.log("cannot send friend request", error)
     }
 }

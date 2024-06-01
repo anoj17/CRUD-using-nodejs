@@ -11,7 +11,7 @@ const SideBar = () => {
   const userData = useSelector((state: any) => state.auth.user)
   return <>
 
-    <div className='lg:w-[400px] lg:h-[90vh] scrollbar-none overflow-scroll shadow drop-shadow-2xl '>
+    <div className='w-[400px] lg:h-[90vh] scrollbar-none overflow-scroll shadow drop-shadow-2xl '>
       <div className='flex space-x-3 items-center bg-gray-400 px-3 py-2'>
         <div className='flex space-x-1 cursor-pointer items-center'>
         <Image src={userData?.data?.profile} alt='avatar' height={30} width={30} className='h-6 w-6 rounded-full' />
