@@ -1,7 +1,8 @@
 import express from "express"
 import cors from "cors"
 import dotenv from "dotenv"
-import { signin } from "./controller/controller.js"
+import { editProfile, login, signin } from "./controller/controller.js"
+import { addFriend } from './controller/addFriendController.js'
 import Connection from "./connection/Connection.js"
 
 dotenv.config()
@@ -16,6 +17,9 @@ app.use(cors({
 app.use(express.json({ limit: '50mb'}))
 
 app.post('/signin', signin)
+app.post('/login', login)
+app.post('/profile', editProfile)
+app.post('/addFriend', addFriend)
 
 const PORT = process.env.PORT || 8000
 

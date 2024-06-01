@@ -3,6 +3,7 @@ import mongoose from "mongoose";
 const schemaModel = mongoose.Schema({
     fname: String,
     lname: String,
+    phone: String,
     password: String,
     profile: String
 })
